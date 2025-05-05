@@ -1,0 +1,198 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Women's Fashion</title>
+  <style>
+    /* ----- VARIABLES ----- */
+    :root {
+      --primary: hsl(330, 60%, 62%);      /* rich rose */
+      --secondary: hsl(200, 80%, 80%);    /* soft sky */
+      --accent: hsl(48, 100%, 67%);       /* warm amber */
+      --bg: #fafafa;
+      --text: #333;
+      --card-bg: #fff;
+      --border-light: hsla(0,0%,0%,.1);
+    }
+
+    /* ----- GLOBAL RESET ----- */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { 
+      font-family: 'Segoe UI', sans-serif; 
+      background: var(--bg); 
+      color: var(--text);
+      overflow-x:hidden;
+    }
+    img { display:block; width:100%; height:auto; }
+
+    /* ----- PAGE LAYOUT ----- */
+    header {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      color: white; padding:2rem 1rem; text-align:center;
+      position: relative;
+      overflow:hidden;
+    }
+    header::after {
+      content:''; position:absolute; top:0; left:0; width:100%; height:100%;
+      background: radial-gradient(circle at top right, rgba(255,255,255,.2), transparent);
+    }
+    header h1 { position:relative; z-index:1; font-size:2rem; }
+    header p { position:relative; z-index:1; margin-top:.5rem; }
+
+    .product-section { padding:2rem 1rem; }
+    .product-section h2 { text-align:center; margin-bottom:1.5rem; font-size:1.75rem; }
+
+    .product-grid {
+      display: flex; flex-wrap: wrap; justify-content:center; gap:1.5rem;
+    }
+
+    /* ----- PRODUCT CARD ----- */
+    .product-card {
+      background: var(--card-bg); 
+      border-radius:12px;
+      box-shadow:0 8px 16px rgba(0,0,0,.05);
+      width:220px;
+      overflow:hidden;
+      position:relative;
+      transform: translateY(50px);
+      opacity:0;
+      animation: floatIn 0.6s ease-out forwards;
+    }
+    .product-card:nth-child(even) { animation-delay: .1s; }
+    .product-card:nth-child(odd)  { animation-delay: .2s; }
+
+    @keyframes floatIn {
+      to { transform: translateY(0); opacity:1; }
+    }
+
+    .product-card img { border-bottom: 1px solid var(--border-light); }
+    .product-info {
+      padding:1rem; text-align:center;
+      position:relative;
+      z-index:1;
+    }
+    .product-info h3 { margin-bottom:.5rem; font-size:1.1rem; }
+    .old-price {
+      color: #888; text-decoration:line-through; font-size:.9rem;
+    }
+    .new-price {
+      display:block; color:var(--accent); font-weight:bold; margin:.3rem 0;
+    }
+    .offer { font-size:.8rem; color:green; margin-left:.3rem; }
+
+    /* ----- ANIMATED BORDER ON HOVER ----- */
+    .product-card::before,
+    .product-card::after {
+      content:''; position:absolute; pointer-events:none;
+      border:2px solid var(--accent);
+      width:0; height:0; transition: all .4s ease;
+    }
+    .product-card::before {
+      top:0; left:0;
+      border-right-width:0; border-bottom-width:0;
+    }
+    .product-card::after {
+      bottom:0; right:0;
+      border-left-width:0; border-top-width:0;
+    }
+    .product-card:hover::before {
+      width:100%; height:100%;
+      border-right-width:2px; border-bottom-width:2px;
+    }
+    .product-card:hover::after {
+      width:100%; height:100%;
+      border-left-width:2px; border-top-width:2px;
+    }
+
+    .add-to-cart-btn {
+      background:var(--primary); color:white; border:none;
+      padding:.6rem 1.2rem; border-radius:6px; cursor:pointer;
+      transition: background .3s;
+    }
+    .add-to-cart-btn:hover {
+      background:var(--accent);
+    }
+
+    .back-btn {
+      display:inline-block; margin:2rem auto 0;
+      padding:.8rem 1.5rem; background:var(--secondary);
+      color:var(--text); border-radius:6px; text-decoration:none;
+      transition:background .3s;
+    }
+    .back-btn:hover {
+      background:var(--accent);
+      color:#fff;
+    }
+
+    footer {
+      background:#222; color:#ccc; text-align:center; padding:1rem;
+    }
+    footer img { width:24px; margin-top:.5rem; filter:invert(1); }
+
+    @media(max-width:600px) {
+      .product-card { width:45%; }
+    }
+    @media(max-width:400px) {
+      .product-card { width:90%; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Women's Fashion Collection</h1>
+  <p>🛒 <span id="cart-count">0</span> items &nbsp;|&nbsp; 💰 ₹<span id="total-price">0</span></p>
+</header>
+
+<section class="product-section">
+  <h2>Explore Our Women's Collection</h2>
+  <div class="product-grid">
+    <!-- PHP & HTML for each product card -->
+    <?php
+      // Sample products array
+      $products = [
+        ['id'=>1,'name'=>'Floral Lehenga','price'=>6299,'discount'=>25,'img'=>'images/girl1.avif'],
+        ['id'=>2,'name'=>'Maxi Dress','price'=>1399,'discount'=>30,'img'=>'images/women2.jpg'],
+        // add more...
+      ];
+      foreach($products as $p):
+        $discPrice = round($p['price']*(1-$p['discount']/100));
+    ?>
+    <div class="product-card">
+      <img src="<?= $p['img'] ?>" alt="<?= $p['name'] ?>">
+      <div class="product-info" data-price="<?= $p['price'] ?>" data-discount="<?= $p['discount'] ?>">
+        <h3><?= $p['name'] ?></h3>
+        <p class="old-price">₹<?= $p['price'] ?></p>
+        <p class="new-price">₹<?= $discPrice ?><span class="offer">(<?= $p['discount'] ?>% OFF)</span></p>
+        <button class="add-to-cart-btn">Add to Cart</button>
+      </div>
+    </div>
+    <?php endforeach; ?>
+  </div>
+  <a href="cart.php" class="back-btn">Go to Cart</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 DesiTrend</p>
+  <a href="#"><img src="images/instagram-icon.png" alt="IG"></a>
+</footer>
+
+<script>
+  let cartCount=0, totalPrice=0;
+  const cCount=document.getElementById('cart-count'),
+        tPrice=document.getElementById('total-price');
+  document.querySelectorAll('.add-to-cart-btn').forEach(btn=>{
+    btn.onclick = ()=> {
+      const info=btn.closest('.product-info'),
+            txt=info.querySelector('.new-price').innerText.replace(/[₹,\s\(\)\%A-Za-z]/g,''),
+            price=parseFloat(txt);
+      cartCount++; totalPrice+=price;
+      cCount.innerText=cartCount; tPrice.innerText=totalPrice.toFixed(0);
+    }
+  });
+</script>
+
+</body>
+</html>
