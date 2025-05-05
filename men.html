@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Men's Fashion - DesiTrend</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+      animation: color 9s infinite linear;
+    }
+    @keyframes color {
+  0%   { background: #d88ff3; }
+  20%  { background: #85db86; }
+  40%  { background: #B8CC33; }
+  60%  { background: #b19c48; }
+  80%  { background: #599f5a; }
+  100% { background: #5ebaba; }
+}
+
+    header {
+      background-color: #0f0e0e;
+      /* color: #fff; */
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      box-shadow: 0px opx 30px rgba(277, 228, 237, 0.37);
+    }
+
+    .product-section {
+      padding: 40px 20px;
+    }
+
+    .product-section h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-info h3 {
+      font-size: 1.1rem;
+      margin: 10px 0 5px;
+    
+    
+    }
+    .old-price {
+  color: #888;
+  text-decoration: line-through;
+  font-size: 0.95em;
+}
+
+.new-price {
+  color: #e65100;
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 5px;
+}
+
+.offer {
+  font-size: 0.9em;
+  color: green;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+    
+    .add-to-cart-btn {
+      margin: 10px 0 15px;
+      padding: 10px 20px;
+      background-color: #ff6600;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #e65c00;
+    }
+
+    .back-btn {
+      display: block;
+      text-align: center;
+      margin: 30px auto 0;
+      padding: 12px 25px;
+      background-color: #222;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      width: fit-content;
+    }
+
+    .back-btn:hover {
+      background-color: #953434;
+    }
+    
+    footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+  }
+
+
+    @media (max-width: 600px) {
+      .product-info h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Men's Fashion Collection</h1>
+      <p style="margin-top: 10px;">🛒 Cart Items: <span id="cart-count">0</span></p>
+      <p style="margin-top: 5px;">💰 Total: ₹<span id="total-price">0</span></p>
+    
+  </header>
+
+  <section class="product-section">
+    <h2>Explore Our Men's Collection</h2>
+    <div class="product-grid">
+      
+      <!-- Repeat block starts -->
+      <div class="product-card">
+        <img src="images/kurta1.jpg" alt="Kurta 1">
+        <div class="product-info" data-price="4299" data-discount="25">
+          <h3>Classic Blue Kurta</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/sirt1.webp" alt="men's check shirt">
+        <div class="product-info"data-price="799" data-discount="20">
+          <h3>Elegant Black check shirt</h3>
+          <p class="old-price"></p> <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/sirt3.webp" alt="men's check shirt">
+        <div class="product-info"data-price="1199" data-discount="25">
+          <h3>Cotton Casual Shirt</h3>
+          <p class="old-price"></p>
+<p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/shirt2.jpg" alt="Shirt 2">
+        <div class="product-info"data-price="1199" data-discount="25">
+          <h3>Stylish Checks Shirt</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/jeans1.jpg" alt="Jeans 1">
+        <div class="product-info"data-price="1199" data-discount="25">
+          <h3>Dark Denim Jeans</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/jeans2.jpg" alt="Jeans 2">
+        <div class="product-info"data-price="1199" data-discount="25">
+          <h3>Light Wash Jeans</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/tshirt1.jpg" alt="T-Shirt 1">
+        <div class="product-info"data-price="1199" data-discount="25">
+          <h3>Graphic T-Shirt</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/tshirt2.jpg" alt="T-Shirt 2">
+        <div class="product-info"data-price="1199" data-discount="25">
+          <h3>Plain Black Tee</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/jacket1.jpg" alt="Jacket 1">
+        <div class="product-info"data-price="1199" data-discount="15">
+          <h3>Winter Bomber Jacket</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/jacket2.jpg" alt="Jacket 2">
+        <div class="product-info"data-price="1199" data-discount="15">
+          <h3>Denim Jacket</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/sweater1.jpg" alt="Sweater 1">
+        <div class="product-info"data-price="1199" data-discount="15">
+          <h3>Woolen Sweater</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/blazer1.jpg" alt="Blazer 1">
+        <div class="product-info"data-price="4499" data-discount="15">
+          <h3>Formal Grey Blazer</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/pants1.jpg" alt="Pants 1">
+        <div class="product-info"data-price="1199" data-discount="25">
+          <h3>Chinos Trouser</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/shoes1.jpg" alt="Shoes 1">
+        <div class="product-info"data-price="3499" data-discount="25">
+          <h3>Casual Loafers</h3>
+          <p class="old-price"></p>
+  <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/shoes2.jpg" alt="Shoes 2">
+        <div class="product-info"data-price="4499" data-discount="35">
+          <h3>Formal Leather Shoes</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <!-- Repeat block ends -->
+
+    </div>
+    <a href="hompage.html" class="back-btn">Back to Home</a>
+  </section>
+  
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 TrendZone. All rights reserved. By Ranjeet Shah</p>
+    <a href="https://www.instagram.com/iamranjeett_o7" target="_blank">
+      <i class="fab fa-instagram"> Instagram</i>
+    </a>
+    
+    </div>
+  </footer>
+
+  <script>
+    
+
+  // for calculate discaunt percentage
+  document.addEventListener("DOMContentLoaded", () => {
+    const productInfos = document.querySelectorAll(".product-info");
+
+    productInfos.forEach(info => {
+      const originalPrice = parseFloat(info.dataset.price);
+      const discount = parseFloat(info.dataset.discount);
+
+      if (!isNaN(originalPrice) && !isNaN(discount)) {
+        const discountedPrice = Math.round(originalPrice * (1 - discount / 100));
+        
+        const oldPriceElement = info.querySelector(".old-price");
+        const newPriceElement = info.querySelector(".new-price");
+
+        oldPriceElement.textContent = `₹${originalPrice}`;
+        newPriceElement.innerHTML = `₹${discountedPrice} <span class="offer">(${discount}% OFF)</span>`;
+      }
+    });
+  });
+
+ // cart total price show 
+  let cartCount = 0;
+  let totalPrice = 0;
+
+  const cartCountSpan = document.getElementById("cart-count");
+  const totalPriceSpan = document.getElementById("total-price");
+
+  const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+
+  addToCartButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const productInfo = button.parentElement;
+      const newPriceTag = productInfo.querySelector(".new-price");
+
+      // Convert ₹ price string to number
+      const price = parseFloat(newPriceTag.textContent.replace("₹", ""));
+
+      // Update values
+      cartCount++;
+      totalPrice += price;
+
+      cartCountSpan.textContent = cartCount;
+      totalPriceSpan.textContent = totalPrice.toFixed(2);
+    });
+  });
+
+
+
+  </script>
+  
+</body>
+</html>
+
+    

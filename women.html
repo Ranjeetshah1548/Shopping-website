@@ -1,0 +1,397 @@
+
+</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Women's Fashion </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Same CSS as men's page */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #fef5f8;
+      color: #333;
+      animation: color 9s infinite linear;
+    }
+
+    @keyframes color {
+  0%   { background: #d88ff3; }
+  20%  { background:rgb(235, 149, 115); }
+  40%  { background:rgb(220, 104, 133); }
+  60%  { background:rgb(75, 25, 97); }
+  80%  { background: #599f5a; }
+  100% { background:rgb(219, 124, 189); }
+}
+
+    header {
+      background-color:rgb(221, 20, 121);
+      /* color: #fff; */
+      padding: 20px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      box-shadow: 0px opx 30px rgba(277, 228, 237, 0.37);
+    }
+    .product-section {
+      padding: 40px 20px;
+    }
+
+    .product-section h2 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-info h3 {
+      font-size: 1.1rem;
+      margin: 10px 0 5px;
+    }
+
+    
+    .old-price {
+  color: #888;
+  text-decoration: line-through;
+  font-size: 0.95em;
+}
+
+.new-price {
+  color: #e65100;
+  font-weight: bold;
+  font-size: 1.1em;
+   margin-top: 5px;
+    }
+.offer {
+  font-size: 0.9em;
+  color: green;
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+ 
+    .add-to-cart-btn {
+      margin: 10px 0 15px;
+      padding: 10px 20px;
+      background-color: #c2185b;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #ad1457;
+    }
+
+    .back-btn {
+      display: block;
+      text-align: center;
+      margin: 30px auto 0;
+      padding: 12px 25px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+      width: fit-content;
+    }
+
+    .back-btn:hover {
+      background-color: #811616;
+    }
+    footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 20px 10px;
+      margin-top: 40px;
+      text-decoration: underline;
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-content img {
+      width: 30px;
+      height: 30px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease;
+    }
+
+    .footer-content img:hover {
+      transform: scale(1.1);
+    }
+
+
+    @media (max-width: 600px) {
+      .product-info h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Women's Fashion Collection</h1>
+    <p style="margin-top: 10px;">🛒 Cart Items: <span id="cart-count">0</span></p>
+    <p style="margin-top: 5px;">💰 Total: ₹<span id="total-price">0</span></p>
+  </header>
+
+  <section class="product-section">
+    <h2>Explore Our Women's Collection</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="images/girl1.avif" alt="Women's Kurti">
+        <div class="product-info" data-price="6299" data-discount="35">
+          <h3>Floral Printed Lehenga</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women2.jpg" alt="Dress">
+        <div class="product-info" data-price="1399" data-discount="30">
+          <h3>Elegant Maxi Dress</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women2.jpg" alt="Dress">
+        <div class="product-info" data-price="1399" data-discount="30">
+          <h3>Elegant Maxi Dress</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women2.jpg" alt="Dress">
+        <div class="product-info" data-price="1399" data-discount="30">
+          <h3>Elegant Maxi Dress</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women2.jpg" alt="Dress">
+        <div class="product-info" data-price="1399" data-discount="30">
+          <h3>Elegant Maxi Dress</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women2.jpg" alt="Dress">
+        <div class="product-info" data-price="1399" data-discount="30">
+          <h3>Elegant Maxi Dress</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women2.jpg" alt="Dress">
+        <div class="product-info" data-price="1399" data-discount="30">
+          <h3>Elegant Maxi Dress</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      
+      <div class="product-card">
+        <img src="images/women3.jpg" alt="Top">
+        <div class="product-info" data-price="899" data-discount="20">
+          <h3>Stylish Casual Top</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women4.jpg" alt="Saree">
+        <div class="product-info" data-price="2099" data-discount="35">
+          <h3>Designer Saree</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women4.jpg" alt="Saree">
+        <div class="product-info" data-price="2099" data-discount="35">
+          <h3>Designer Saree</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women4.jpg" alt="Saree">
+        <div class="product-info" data-price="2099" data-discount="35">
+          <h3>Designer Saree</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women5.jpg" alt="Palazzo Set">
+        <div class="product-info" data-price="999" data-discount="15">
+          <h3>Palazzo Set</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women6.jpg" alt="Jacket">
+        <div class="product-info" data-price="2499" data-discount="40">
+          <h3>Winter Long Coat</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women7.jpg" alt="Jeans">
+        <div class="product-info" data-price="1599" data-discount="20">
+          <h3>Skinny Fit Jeans</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="images/women8.jpg" alt="Heels">
+        <div class="product-info" data-price="1299" data-discount="10">
+          <h3>Stylish Heels</h3>
+          <p class="old-price"></p>
+          <p class="new-price"></p>
+          <button class="add-to-cart-btn">Add to Cart</button>
+        </div>
+      </div>
+      
+      <!-- Add more as needed -->
+    </div>
+    <a href="hompage.html" class="back-btn">Back to Home</a>
+  </section>
+</body>
+</html>
+
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 TrendZone. All rights reserved. By Ranjeet Shah</p>
+    <a href="https://www.instagram.com/iamranjeett_o7" target="_blank">
+      <i class="fab fa-instagram"> Instagram</i>
+    </a>
+    </div>
+  </footer>
+
+  
+  <script>
+    let cartCount = 0;
+    let totalPrice = 0;
+  
+    const cartCountSpan = document.getElementById("cart-count");
+    const totalPriceSpan = document.getElementById("total-price");
+  
+    const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+  
+    addToCartButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const productInfo = button.parentElement;
+        const newPriceTag = productInfo.querySelector(".new-price");
+  
+        // Convert ₹ price string to number
+        const price = parseFloat(newPriceTag.textContent.replace("₹", ""));
+  
+        // Update values
+        cartCount++;
+        totalPrice += price;
+  
+        cartCountSpan.textContent = cartCount;
+        totalPriceSpan.textContent = totalPrice.toFixed(2);
+      });
+    });
+  
+
+    // for calculate discaunt percentage
+  document.addEventListener("DOMContentLoaded", () => {
+    const productInfos = document.querySelectorAll(".product-info");
+
+    productInfos.forEach(info => {
+      const originalPrice = parseFloat(info.dataset.price);
+      const discount = parseFloat(info.dataset.discount);
+
+      if (!isNaN(originalPrice) && !isNaN(discount)) {
+        const discountedPrice = Math.round(originalPrice * (1 - discount / 100));
+        
+        const oldPriceElement = info.querySelector(".old-price");
+        const newPriceElement = info.querySelector(".new-price");
+
+        oldPriceElement.textContent = `₹${originalPrice}`;
+        newPriceElement.innerHTML = `₹${discountedPrice} <span class="offer">(${discount}% OFF)</span>`;
+      }
+    });
+  });
+  </script>
+  
+  
+</body>
+</html>
